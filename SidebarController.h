@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UIViewController *sidebarViewController;
 @property (nonatomic, assign) id <SidebarControllerDelegate> delegate;
 
+@property (nonatomic, readonly) BOOL isSidebarVisible;
 
 // sets how much the main view should be dimmed when the sidebar is presented
 // defaults to 0 (no dimming)
@@ -33,5 +34,8 @@
 
 // closes the sidebar
 -(void)closeSidebarWithAnimation:(BOOL)shouldAnimate;
+
+// toggle the sidebar state
+-(void)toggleSidebarWithAnimation:(BOOL)shouldAnimate;
 
 @end

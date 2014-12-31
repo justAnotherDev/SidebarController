@@ -61,6 +61,11 @@
 
 -(void)openSidebarWithAnimation:(BOOL)shouldAnimate {
 	
+	if (_isSidebarVisible)
+		return;
+	
+	_isSidebarVisible = YES;
+	
 	_blockerView = [[UIView alloc] init];
 	_blockerView.translatesAutoresizingMaskIntoConstraints = NO;
 	_blockerView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
@@ -94,6 +99,11 @@
 
 -(void)closeSidebarWithAnimation:(BOOL)shouldAnimate {
 	
+	if (!_isSidebarVisible)
+		return;
+	
+	_isSidebarVisible = NO;
+	
 	void (^changeBlock)(void) = ^ {
 		self.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
 		_blockerView.alpha = 0;
@@ -115,6 +125,14 @@
 	[UIView animateWithDuration:0.5 animations:changeBlock completion:completionBlock];
 }
 
+
+-(void)toggleSidebarWithAnimation:(BOOL)shouldAnimate {
+	if (!_isSidebarVisible) {
+		[self openSidebarWithAnimation:shouldAnimate];
+	} else {
+		[self closeSidebarWithAnimation:shouldAnimate];
+	}
+}
 
 
 @end
