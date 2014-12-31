@@ -29,6 +29,10 @@
 // defaults to NO
 @property(nonatomic) BOOL shouldAutoCollapse;
 
+// sets if the main view allow user interaction when the sidebar is open
+// defaults to NO
+@property (nonatomic) BOOL blockMainViewWhenOpen;
+
 // opens the sidebar
 -(void)openSidebarWithAnimation:(BOOL)shouldAnimate;
 

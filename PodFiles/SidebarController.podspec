@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'SidebarController'
-  s.version  = '1.1'
+  s.version  = '1.2'
   s.platform = :ios
   s.summary  = 'A usable wrapper for UISplitViewController to act as a side bar.'
   s.homepage = 'https://github.com/justAnotherDev/SidebarController'

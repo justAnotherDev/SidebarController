@@ -66,21 +66,23 @@
 	
 	_isSidebarVisible = YES;
 	
-	_blockerView = [[UIView alloc] init];
-	_blockerView.translatesAutoresizingMaskIntoConstraints = NO;
-	_blockerView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
-	_blockerView.exclusiveTouch = YES;
-	[_mainViewController.view addSubview:_blockerView];
+	if (_blockMainViewWhenOpen) {
+		_blockerView = [[UIView alloc] init];
+		_blockerView.translatesAutoresizingMaskIntoConstraints = NO;
+		_blockerView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
+		_blockerView.exclusiveTouch = YES;
+		[_mainViewController.view addSubview:_blockerView];
 	
-	// add gesture recognizer to the blocker view if we should auto collapse when tapped off screen
-	if (_shouldAutoCollapse) {
-		UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeSidebarWithAnimation:)];
-		[_blockerView addGestureRecognizer:tapRecognizer];
+		// add gesture recognizer to the blocker view if we should auto collapse when tapped off screen
+		if (_shouldAutoCollapse) {
+			UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeSidebarWithAnimation:)];
+			[_blockerView addGestureRecognizer:tapRecognizer];
+		}
+	
+		NSDictionary *views = NSDictionaryOfVariableBindings(_blockerView);
+		[_mainViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_blockerView]|" options:0 metrics:nil views:views]];
+		[_mainViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_blockerView]|" options:0 metrics:nil views:views]];
 	}
-	
-	NSDictionary *views = NSDictionaryOfVariableBindings(_blockerView);
-	[_mainViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_blockerView]|" options:0 metrics:nil views:views]];
-	[_mainViewController.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_blockerView]|" options:0 metrics:nil views:views]];
 	
 	
 	void (^changeBlock)(void) = ^ {

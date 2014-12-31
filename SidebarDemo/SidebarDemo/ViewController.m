@@ -60,7 +60,7 @@
 }
 
 -(void)openSidebarHit {
-	[_sidebarController openSidebarWithAnimation:YES];
+	[_sidebarController toggleSidebarWithAnimation:YES];
 }
 
 @end
