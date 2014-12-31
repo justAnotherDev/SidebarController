@@ -1,3 +1,4 @@
 *.DS_Store
 SidebarDemo/SidebarDemo.xcodeproj/xcuser*
 SidebarDemo/SidebarDemo.xcodeproj/project.xcworkspace/xcuser*
+SidebarDemo/SidebarDemo.xcodeproj/project.xcworkspace/xcshared*
