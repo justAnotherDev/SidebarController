@@ -1,6 +1,5 @@
 //
 //  SidebarController.h
-//  GuardianStats
 //
 //  Created by cevanoff on 12/30/14.
 //
@@ -32,6 +31,10 @@
 // sets if the main view allow user interaction when the sidebar is open
 // defaults to NO
 @property (nonatomic) BOOL blockMainViewWhenOpen;
+
+// sets the width of the sidebar
+// defaults to 300
+@property (nonatomic) int sidebarWidth;
 
 // opens the sidebar
 -(void)openSidebarWithAnimation:(BOOL)shouldAnimate;

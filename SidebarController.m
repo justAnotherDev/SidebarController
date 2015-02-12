@@ -1,6 +1,5 @@
 //
 //  SidebarController.m
-//  GuardianStats
 //
 //  Created by cevanoff on 12/30/14.
 //
@@ -13,6 +12,16 @@
 @end
 
 @implementation SidebarController
+
+-(instancetype)init {
+	self = [super init];
+	if (!self)
+		return nil;
+	
+	self.sidebarWidth = 300;
+	
+	return self;
+}
 
 -(void)viewDidLoad {
 	[super viewDidLoad];
@@ -98,7 +107,6 @@
 	[_mainViewController.view layoutIfNeeded];
 	[UIView animateWithDuration:0.5 animations:changeBlock];
 }
-
 -(void)closeSidebarWithAnimation:(BOOL)shouldAnimate {
 	
 	if (!_isSidebarVisible)
@@ -127,6 +135,14 @@
 	[UIView animateWithDuration:0.5 animations:changeBlock completion:completionBlock];
 }
 
+-(void)setSidebarWidth:(int)sidebarWidth {
+	if (_sidebarWidth == sidebarWidth)
+		return;
+	
+	_sidebarWidth = sidebarWidth;
+	self.maximumPrimaryColumnWidth = sidebarWidth;
+	self.minimumPrimaryColumnWidth = sidebarWidth;
+}
 
 -(void)toggleSidebarWithAnimation:(BOOL)shouldAnimate {
 	if (!_isSidebarVisible) {
